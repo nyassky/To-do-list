@@ -2,3 +2,9 @@
 	background-color: #333333;
 }
 
+#to_do_list {
+	color: white;
+	font-size: 3rem;
+	font-family: Unbounded;
+	text-align: center;
+}
