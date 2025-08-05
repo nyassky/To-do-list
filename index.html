@@ -8,16 +8,26 @@
 </head>
 <body class="container">
 	<header>
-    	<h1 id="to_do_list">To-Do List</h1>
+    	<h1 id="to_do_list">To-Do List</h1> <!-- Блок Header с надписью и "бургер-меню"-->
     	<button class="menu-toggle"></button>
 	</header>
-	<main>
-		<div>
-			<input></input> <!-- Задача -->
-			<select>Дедлайн</select>
-			<select>Важность задачи</select>
-			<button>Добавить задачу</button>
-		</div>
-	</main>
+		<form>
+			<div>
+				<input></input> <!-- Задача -->
+			</div>
+			<div>
+				<select name="Priority" id="priority">
+					<option value="low">Low</option>
+					<option value="mid">Mid</option>
+					<option value="high">High</option>
+				</select>
+			</div>
+			<div>
+				<input type="date" id="date">
+			</div>
+			<div>
+				<button>Добавить задачу</button>
+			</div>
+		</form>
 </body>
 </html>
