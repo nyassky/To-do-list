@@ -7,6 +7,7 @@
 	font-size: 3rem;
 	font-family: Unbounded;
 	text-align: center;
+	margin-left: 70px;
 }
 
 #task {
@@ -33,6 +34,8 @@
 	text-align: center;
 	color: #484848;
 	background-color: #89FC00;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
 }
 .row {
 	margin-left: 530px;
@@ -77,12 +80,20 @@ select option[value=""][disabled] {
 #type_of_task {
 	width: 160px;
 }
-.site_font_family {
-	font-family: Unbounded;
+body {
+	font-family: Unbounded, sans-serif;
 }
 .menu_toggle {
-	display:flex;
+	display: flex;
 	background-color: #333333;
-	width:50px;
-	height:50px;
+	width: 70px;
+	height: 70px;
+	border: none;
+	cursor: pointer;
+}
+.menu_icon {
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
 }
