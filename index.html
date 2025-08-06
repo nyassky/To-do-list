@@ -12,22 +12,40 @@
     	<button class="menu-toggle"></button>
 	</header>
 		<form>
-			<div>
-				<input></input> <!-- Задача -->
+			<div class="row">
+				<input id="task"placeholder="Task"></input> <!-- Задача -->
 			</div>
-			<div>
-				<select name="Priority" id="priority">
+			<div class="row">
+				<input type="date" id="date">
+				<select required>
+					<option value="" disabled selected hidden>Priority</option>
 					<option value="low">Low</option>
 					<option value="mid">Mid</option>
 					<option value="high">High</option>
+					
+				</select>
+				<select required id="type_of_task">
+					<option value="" disabled selected hidden>Type of task</option>
+					<option value="work">Work</option>
+					<option value="education">Education</option>
+					<option value="home">Home</option>
+					
 				</select>
 			</div>
-			<div>
-				<input type="date" id="date">
-			</div>
-			<div>
-				<button>Добавить задачу</button>
+			<div class="row">
+				<button id="add_task">Add task</button>
 			</div>
 		</form>
+
+		<ul class="" id="">
+        <li class="">
+          <span>Название</span>
+          <span>
+            <span class="">&check;</span>
+            <span class="">&times;</span>
+          </span>
+        </li>
+      </ul>
+
 </body>
 </html>

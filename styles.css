@@ -9,6 +9,66 @@
 	text-align: center;
 }
 
-.input_task {
-	
+#task {
+	width: 600px;
+	height: 50px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: flex;
+	border-radius: 45px;
+	font-size: 20px;
 }
+
+#task::placeholder {
+	color: #484848;
+}
+#add_task {
+	width: 610px;
+	height: 56px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 45px;
+	font-size: 20px;
+	text-align: center;
+	color: #484848;
+	background-color: #89FC00;
+}
+.row {
+	margin-left: 530px;
+	display: flex;
+	gap: 10px;
+}
+select {
+	width: 200px;
+	height: 56px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: flex;
+	border-radius: 45px;
+	font-size: 18px;
+}
+
+select:required:invalid {
+	color: #484848;
+}
+select option {
+	color: black;
+}
+select option[value=""][disabled] {
+	display: none;
+}
+
+#date {
+	width: 225px;
+	height: 56px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: flex;
+	border-radius: 45px;
+	font-size: 18px;
+}
+
+#type_of_task {
+	width: 160px;
+}
+
