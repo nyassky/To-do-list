@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>To-Do List</title>
 	<link rel="stylesheet" href="styles.css">
+	<script src="app.js" defer></script>
 </head>
 <body class="container">
 	<header class="header_menu">
@@ -14,13 +15,12 @@
 			<div class="circle"></div>
 		</div>
 	</header>
-		<form>
 			<div class="row">
 				<input id="task"placeholder="Task"></input> <!-- Задача -->
 			</div>
 			<div class="row">
 				<input type="date" id="date">
-				<select required>
+				<select required id="priority">
 					<option value="" disabled selected hidden>Priority</option>
 					<option value="low" id="low">Low</option>
 					<option value="mid" id="mid">Mid</option>
@@ -36,17 +36,21 @@
 			<div class="row">
 				<button id="add_task">Add task</button>
 			</div>
-		</form>
 
-		<ul class="" id="">
+		<ul class="" id="list">
         <li class="">
-          <span>Название</span>
-          <span>
-            <button id="success">&check;</button>
-            <button id="delete">&times;</button>
-          </span>
+			<div class="item_content">
+				<span>Task</span>
+		  		<span>Priority</span>
+				<span>Deadline</span>
+				<span>Type of task</span>
+			</div>
+          <div class="item_actions">
+            <button class="success">&check;</button>
+            <button class="delete">&times;</button>
+          </div>
         </li>
-      </ul>
+      	</ul>
 
 </body>
 </html>

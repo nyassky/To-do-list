@@ -47,13 +47,18 @@
 	font-size: clamp(14px, 2vw, 18px); 
 	font-family: Unbounded;
 	text-align: center;
-	color: #484848;
-	background-color: #89FC00;
+	color: white;
+	background-color: #484848;
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 	cursor: pointer;
 	border: none;
 	flex: 1 1 auto; /* Гибкое растягивание */
 	min-width: 60px; /* Минимальная ширина */
+}
+#add_task:hover {
+	background-color: #89FC00;
+	color: #484848;
+	transition: 0.7s;
 }
 form {
 	width: 100%;
@@ -164,23 +169,34 @@ li {
     border-radius: 8px;
     color: white;
 }
-#success {
+.item_content {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.item_actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+.success {
 	width: clamp(40px, 10vw, 30px);
     height: clamp(40px, 10vw, 30px);
-	background-color: #3CB371;
-	color: white;
+	background-color: #89FC00;
+	color: #484848;
 	border-radius: 5px;
-	border-color: #32CD32;
+	border-color: #d8ffb2;
 	border-style: solid;
 	cursor: pointer;
 }
-#delete {
+.delete {
 	width: clamp(40px, 10vw, 30px);
     height: clamp(40px, 10vw, 30px);
-	background-color: #B22222;
-	color: white;
+	padding-top: 4px;
+	background-color: #FF75D1;
+	color: #484848;
 	border-radius: 5px;
-	border-color: #DC143C;
+	border-color: #DDA0DD;
 	border-style: solid;
 	cursor: pointer;
 }
