@@ -164,7 +164,26 @@ li {
     border-radius: 8px;
     color: white;
 }
-
+#success {
+	width: clamp(40px, 10vw, 30px);
+    height: clamp(40px, 10vw, 30px);
+	background-color: #3CB371;
+	color: white;
+	border-radius: 5px;
+	border-color: #32CD32;
+	border-style: solid;
+	cursor: pointer;
+}
+#delete {
+	width: clamp(40px, 10vw, 30px);
+    height: clamp(40px, 10vw, 30px);
+	background-color: #B22222;
+	color: white;
+	border-radius: 5px;
+	border-color: #DC143C;
+	border-style: solid;
+	cursor: pointer;
+}
 @media (min-width: 768px) {
     .row {
         flex-direction: row; /* На планшетах и ПК - горизонтально */
