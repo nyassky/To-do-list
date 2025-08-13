@@ -165,8 +165,8 @@ li {
     justify-content: space-between;
     padding: 15px;
     margin: 10px 0;
-    background: #444;
-    border-radius: 8px;
+    background: #D9D9D9;
+    border-radius: 15px;
     color: white;
 }
 .item_content {
@@ -174,18 +174,23 @@ li {
 	flex-direction: column;
 	gap: 10px;
 }
+.text_style {
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: clamp(16px, 2vw, 20px);
+	color: #484848;
+}
 .item_actions {
 	display: flex;
 	gap: 8px;
 	align-items: center;
 }
 .success {
-	width: clamp(40px, 10vw, 30px);
-    height: clamp(40px, 10vw, 30px);
+	width: clamp(50px, 10vw, 40px);
+    height: clamp(50px, 10vw, 40px);
 	background-color: #89FC00;
 	color: #484848;
 	border-radius: 5px;
-	border-color: #d8ffb2;
+	border-color: #529e06;
 	border-style: solid;
 	cursor: pointer;
 }
@@ -193,13 +198,13 @@ li {
 	opacity: 0.8;
 }
 .delete {
-	width: clamp(40px, 10vw, 30px);
-    height: clamp(40px, 10vw, 30px);
+	width: clamp(50px, 10vw, 40px);
+    height: clamp(50px, 10vw, 40px);
 	padding-top: 4px;
 	background-color: #FF75D1;
 	color: #484848;
 	border-radius: 5px;
-	border-color: #DDA0DD;
+	border-color: #ca4fca;
 	border-style: solid;
 	cursor: pointer;
 }

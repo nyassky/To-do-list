@@ -11,11 +11,11 @@ const templateLi = document.querySelector(".template");
 function getTask (){
 	listElement.insertAdjacentHTML("beforeend", `
         <li class="">
-			<div class="item_content">
-				<span>Task: ${taskInput.value}</span>
-		  		<span>Priority: ${priorityChoice.value}</span>
-				<span>Deadline: ${dateChoice.value}</span>
-				<span>Type: ${typeOfTask.value}</span>
+			<div class="item_content text_style">
+				<span><u>Task:</u> <strong>${taskInput.value}</strong></span>
+		  		<span><u>Priority:</u> <strong>${priorityChoice.value}</strong></span>
+				<span><u>Deadline:</u> <strong>${dateChoice.value}</strong></span>
+				<span><u>Type of task:</u> <strong>${typeOfTask.value}</strong></span>
 			</div>
           	<div class="item_actions">
             	<button class="success">&check;</button>
