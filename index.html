@@ -15,42 +15,44 @@
 			<div class="circle"></div>
 		</div>
 	</header>
-			<div class="row">
-				<input id="task"placeholder="Task"></input> <!-- Задача -->
-			</div>
-			<div class="row">
-				<input type="date" id="date">
-				<select required id="priority">
-					<option value="" disabled selected hidden>Priority</option>
-					<option value="low" id="low">Low</option>
-					<option value="mid" id="mid">Mid</option>
-					<option value="high"id="high">High</option>
-				</select>
-				<select required id="type_of_task">
-					<option value="" disabled selected hidden>Type of task</option>
-					<option value="work">Work</option>
-					<option value="education">Education</option>
-					<option value="home">Home</option>
-				</select>
-			</div>
-			<div class="row">
-				<button id="add_task">Add task</button>
-			</div>
-
-		<ul class="" id="list">
-        <li class="">
-			<div class="item_content">
-				<span>Task</span>
-		  		<span>Priority</span>
-				<span>Deadline</span>
-				<span>Type of task</span>
-			</div>
-          <div class="item_actions">
-            <button class="success">&check;</button>
-            <button class="delete">&times;</button>
-          </div>
-        </li>
-      	</ul>
+	<form>
+		<div class="row">
+		<input id="task"placeholder="Task"> <!-- Задача -->
+		</div>
+		<div class="row">
+			<input type="date" id="date">
+			<select required id="priority">
+				<option value="" disabled selected hidden>Priority</option>
+				<option value="low" id="low">Low</option>
+				<option value="mid" id="mid">Mid</option>
+				<option value="high"id="high">High</option>
+			</select>
+			<select required id="type_of_task">
+				<option value="" disabled selected hidden>Type of task</option>
+				<option value="work">Work</option>
+				<option value="education">Education</option>
+				<option value="home">Home</option>
+			</select>
+		</div>
+		<div class="row">
+			<button id="add_task" type="button">Add task</button>
+		</div>
+	</form>
+	
+	<ul class="" id="list">
+	<li class="template hidden">
+	<div class="item_content">
+		<span>Task</span>
+  		<span>Priority</span>
+		<span>Deadline</span>
+		<span>Type of task</span>
+	</div>
+	<div class="item_actions">
+		<button class="success">&check;</button>
+		<button class="delete">&times;</button>
+	</div>
+	</li>
+	</ul>
 
 </body>
 </html>

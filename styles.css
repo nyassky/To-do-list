@@ -8,7 +8,7 @@
 .header_menu {
 	display: flex;
 	align-items: center;
-	justify-content: flex-start; /*?*/
+	justify-content: flex-start;
 	position: relative;
 	padding: 15px 20px;
 }
@@ -31,15 +31,15 @@
 	font-size: clamp(16px, 2vw, 20px); 
 	background-color: #D9D9D9;
 	border: none;
-	box-sizing: border-box; /*?*/
-	flex: 1 1 auto; /* Гибкое растягивание */
-	min-width: 60px; /* Минимальная ширина */
+	box-sizing: border-box;
+	flex: 1 1 auto;
+	min-width: 60px;
 }
 #task::placeholder {
 	color: #484848;
 }
 #add_task {
-	width: 610px;
+	width: 100%;
 	height: clamp(40px, 6vw, 56px);
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -52,8 +52,8 @@
 	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 	cursor: pointer;
 	border: none;
-	flex: 1 1 auto; /* Гибкое растягивание */
-	min-width: 60px; /* Минимальная ширина */
+	flex: 1 1 auto;
+	min-width: 60px;
 }
 #add_task:hover {
 	background-color: #89FC00;
@@ -101,8 +101,8 @@ select {
 	font-size: clamp(14px, 2vw, 18px); 
 	background-color: #D9D9D9;
 	box-sizing: border-box;
-	flex: 1 1 auto; /* Гибкое растягивание */
-	min-width: 60px; /* Минимальная ширина */
+	flex: 1 1 auto;
+	min-width: 60px;
 }
 
 select:required:invalid {
@@ -125,8 +125,8 @@ select option[value=""][disabled] {
 	background-color: #D9D9D9;
 	border: none;
 	box-sizing: border-box;
-	flex: 1 0 auto; /* Гибкое растягивание */
-	min-width: 60px; /* Минимальная ширина */
+	flex: 1 0 auto;
+	min-width: 60px;
 }
 
 #type_of_task {
@@ -189,6 +189,9 @@ li {
 	border-style: solid;
 	cursor: pointer;
 }
+.success:hover {
+	opacity: 0.8;
+}
 .delete {
 	width: clamp(40px, 10vw, 30px);
     height: clamp(40px, 10vw, 30px);
@@ -199,6 +202,12 @@ li {
 	border-color: #DDA0DD;
 	border-style: solid;
 	cursor: pointer;
+}
+.delete:hover {
+	opacity: 0.8;
+}
+.hidden {
+	display: none;
 }
 @media (min-width: 768px) {
     .row {
