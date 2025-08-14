@@ -8,6 +8,23 @@ const btnSuccess = document.querySelector(".success");
 const btnDelete = document.querySelector(".delete");
 const templateLi = document.querySelector(".template");
 
+const menu = document.querySelector(".menu");
+const burgerMenuBtn = document.querySelector(".menu_toggle");
+const menuItems = document.querySelectorAll(".menu_item");
+const burgerMenuOpen = document.querySelector(".menu_icon");
+const burgerMenuClose = document.querySelector(".close_icon");
+
+function toggleMenu() {
+	menu.classList.toggle("showMenu");
+
+	const isOpen = menu.classList.contains("showMenu");
+	burgerMenuClose.style.display = isOpen ? "block" : "none";
+	burgerMenuOpen.style.display = isOpen ? "none" : "block";
+}
+burgerMenuBtn.addEventListener("click", toggleMenu);
+menuItems.forEach(menuItem => {
+	menuItem.addEventListener("click", toggleMenu);
+});
 function getTask (){
 	listElement.insertAdjacentHTML("beforeend", `
         <li class="">
