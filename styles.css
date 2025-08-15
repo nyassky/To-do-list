@@ -55,9 +55,9 @@
 	min-width: 60px;
 }
 #add_task:hover {
-	background-color: #89FC00;
+	background-color: #FF75D1;
 	color: #484848;
-	transition: 0.7s;
+	transition: 0.4s ease-in-out;
 }
 form {
 	width: 100%;
@@ -89,8 +89,19 @@ form {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: -2;
+	animation: pulse 10s linear infinite;
 }
-
+@keyframes pulse {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
 select {
 	width: 100%;
 	height: clamp(40px, 6vw, 56px);

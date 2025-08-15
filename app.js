@@ -51,7 +51,7 @@ addTask.addEventListener("click", function (event){
 	event.preventDefault();
 
 	if (!taskInput.value || !dateChoice.value || !priorityChoice.value || !typeOfTask.value) {
-    	alert("Пожалуйста, заполните все поля!");
+    	alert("Please fill in all fields!");
     	return;
   	}
 
@@ -74,8 +74,11 @@ listElement.addEventListener("click", (event) => {
 		});
 	}
 	if (target.classList.contains("delete")){
-		const listItem = target.closest("li");
-		listItem.remove();
+		let question = confirm("Are you sure you want to delete this task?");
+		if (question){
+			const listItem = target.closest("li");
+			listItem.remove();
+		}
 	}
 
 });
