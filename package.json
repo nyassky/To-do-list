@@ -1,0 +1,25 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "This is a task tracker with the ability to set a priority, deadline, and task type. You can also delete tasks or mark them as completed",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nyassky/To-do-list.git"
+  },
+  "author": "Ranis Vakhitov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nyassky/To-do-list/issues"
+  },
+  "homepage": "https://github.com/nyassky/To-do-list#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
