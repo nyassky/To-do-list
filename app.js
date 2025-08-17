@@ -25,6 +25,7 @@ burgerMenuBtn.addEventListener("click", toggleMenu);
 menuItems.forEach(menuItem => {
 	menuItem.addEventListener("click", toggleMenu);
 });
+
 function getTask (){
 	listElement.insertAdjacentHTML("beforeend", `
         <li class="">
@@ -83,3 +84,11 @@ listElement.addEventListener("click", (event) => {
 
 });
 
+const filterBtn = document.querySelector('.filter')
+const sortBtn = document.querySelector('.sort');
+const downloadTxtBtn = document.querySelector('.download');
+
+filterBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	
+})

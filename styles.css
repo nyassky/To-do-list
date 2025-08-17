@@ -28,11 +28,19 @@
 	padding-left: 15px;
 	border-radius: 45px;
 	font-size: clamp(16px, 2vw, 20px); 
-	background-color: #D9D9D9;
-	border: none;
+	background-color: white;
 	box-sizing: border-box;
 	flex: 1 1 auto;
 	min-width: 60px;
+	transition: all 0.3s ease;
+}
+#task:focus {
+	outline: none;
+    border-color: #FF75D1;
+    box-shadow: 0 0 0 2px rgba(255, 117, 209, 0.2);
+}
+#task:hover {
+	border-color: #FF75D1;
 }
 #task::placeholder {
 	color: #484848;
@@ -103,28 +111,50 @@ form {
 	}
 }
 select {
-	width: 100%;
-	height: clamp(40px, 6vw, 56px);
-	display: flex;
-	border-radius: 45px;
-	padding-left: 15px;
-	font-size: clamp(14px, 2vw, 18px); 
-	background-color: #D9D9D9;
-	box-sizing: border-box;
-	flex: 1 1 auto;
-	min-width: 60px;
+    width: 100%;
+    height: clamp(40px, 6vw, 56px);
+    border-radius: 45px;
+    padding: 0 15px;
+    font-size: clamp(14px, 2vw, 18px);
+    background-color: white;
+    border: 2px solid #484848;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23484848' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    min-width: 60px;
 }
-
+select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+select:focus {
+    outline: none;
+    border-color: #FF75D1;
+    box-shadow: 0 0 0 2px rgba(255, 117, 209, 0.2);
+}
+select:hover {
+    border-color: #FF75D1;
+}
 select:required:invalid {
-	color: #484848;
+    color: #484848;
 }
 select option {
-	color: black;
+    color: black;
+    padding: 10px;
+}
+select:invalid {
+    color: #757575;
 }
 select option[value=""][disabled] {
-	display: none;
+    display: none;
 }
-
 #date {
 	width: 100%;
 	height: clamp(40px, 6vw, 56px);
@@ -132,18 +162,26 @@ select option[value=""][disabled] {
 	border-radius: 45px;
 	font-size: clamp(14px, 2vw, 18px); 
 	color: #484848;
-	background-color: #D9D9D9;
-	border: none;
+	background-color: white;
 	box-sizing: border-box;
 	flex: 1 0 auto;
 	min-width: 60px;
+	transition: all 0.3s ease;
+}
+#date:focus {
+	outline: none;
+    border-color: #FF75D1;
+    box-shadow: 0 0 0 2px rgba(255, 117, 209, 0.2);
+}
+#date:hover {
+	border-color: #FF75D1;
 }
 
 #type_of_task {
 	width: 100%;
 	height: clamp(40px, 6vw, 56px);
 	font-size: clamp(14px, 2vw, 18px); 
-	background-color: #D9D9D9;
+	background-color: white;
 }
 body {
 	font-family: Unbounded, sans-serif;
@@ -216,7 +254,7 @@ ul li {
     justify-content: space-between;
     padding: 15px;
     margin: 10px 0;
-    background: #D9D9D9;
+    background: white;
     border-radius: 15px;
     color: white;
 }
@@ -317,7 +355,6 @@ ul li {
     .row {
         flex-direction: row; /* На планшетах и ПК - горизонтально */
     }
-    
     select, #date {
         width: auto;
         flex: 1; /* Равномерно распределяем пространство */
@@ -334,20 +371,27 @@ ul li {
     .header_menu {
         gap: 20px;
     }
-
+	ul {
+		width: calc(100% - 30%);
+	}
 }
-
 @media (min-width: 992px) {
     .header_menu {
         gap: 30px;
     }
+	ul {
+		max-width: 650px;
+  	}
 	
 }
 @media (max-width: 480px) {
   .row {
     gap: 5px;
   }
-  
+  ul {
+	max-width: 650px;
+	margin-left: 15px;
+  }
   
   #task, #add_task, select, #date {
     height: 40px;
@@ -385,4 +429,19 @@ ul li {
 	.filter {
 		margin-top: 90px;
 	}
+}
+
+@media (min-width: 768px) {
+    select {
+        width: auto;
+        flex: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    select {
+        height: 40px;
+        font-size: 12px;
+        background-position: right 10px center;
+    }
 }
