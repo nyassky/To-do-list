@@ -4,7 +4,7 @@
   "description": "This is a task tracker with the ability to set a priority, deadline, and task type. You can also delete tasks or mark them as completed",
   "main": "server.js",
   "scripts": {
-	"dev": "node server.js",
+    "dev": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/nyassky/To-do-list#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
     "typescript": "^5.9.2"

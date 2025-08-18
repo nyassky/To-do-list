@@ -26,9 +26,27 @@ menuItems.forEach(menuItem => {
 	menuItem.addEventListener("click", toggleMenu);
 });
 
-function getTask (){
+
+async function fetchTasks() {
+	const res = await fetch("http://localhost:5500");
+	const tasks = await res.json();
+	listElement.innerHTML = '';
+	tasks.forEach(addTaskToDom);
+}
+
+async function createTask(taskText, priority, deadline, taskType){
+	const res = await fetch("http://localhost:5500", {
+		method: "POST",
+		headers: {"Content-Type":"application/json"},
+		body: JSON.stringify({tasktext, priority, deadline, taskType}),
+	});
+	const newTask = await res.json();
+	addTaskToDom(newTask);
+}
+
+function addTaskToDom (){
 	listElement.insertAdjacentHTML("beforeend", `
-        <li class="">
+        <li data-id=@${task.id}"class="">
 			<div class="item_content text_style">
 				<span><u>Task:</u> <strong>${taskInput.value}</strong></span>
 		  		<span><u>Priority:</u> <strong>${priorityChoice.value}</strong></span>
@@ -48,7 +66,8 @@ function clearAll() {
     priorityChoice.value = '';
     typeOfTask.value = '';
 }
-addTask.addEventListener("click", function (event){
+fetchTasks();
+addTask.addEventListener("click", async function (event){
 	event.preventDefault();
 
 	if (!taskInput.value || !dateChoice.value || !priorityChoice.value || !typeOfTask.value) {
@@ -56,7 +75,7 @@ addTask.addEventListener("click", function (event){
     	return;
   	}
 
-	getTask();
+	await createTask(taskInput.value, priorityChoice.value, dateChoice.value, typeOfTask.value);
 
 	clearAll();
 });

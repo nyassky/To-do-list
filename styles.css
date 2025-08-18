@@ -1,3 +1,6 @@
+html, body {
+	font-family: Unbounded, sans-serif;
+}
 .container {
 	background-color: #1e1e1e;
 	padding: 20px;
@@ -182,9 +185,6 @@ select option[value=""][disabled] {
 	height: clamp(40px, 6vw, 56px);
 	font-size: clamp(14px, 2vw, 18px); 
 	background-color: white;
-}
-body {
-	font-family: Unbounded, sans-serif;
 }
 .menu {
     position: absolute;
