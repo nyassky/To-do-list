@@ -28,30 +28,33 @@ menuItems.forEach(menuItem => {
 
 
 async function fetchTasks() {
-	const res = await fetch("http://localhost:5500");
+	const res = await fetch("http://localhost:5500/tasks");
 	const tasks = await res.json();
 	listElement.innerHTML = '';
 	tasks.forEach(addTaskToDom);
 }
 
-async function createTask(taskText, priority, deadline, taskType){
-	const res = await fetch("http://localhost:5500", {
+async function createTask(tasktext, priority, deadline, tasktype){
+	const res = await fetch("http://localhost:5500/tasks", {
 		method: "POST",
 		headers: {"Content-Type":"application/json"},
-		body: JSON.stringify({tasktext, priority, deadline, taskType}),
+		body: JSON.stringify({tasktext, priority, deadline, tasktype}),
 	});
 	const newTask = await res.json();
 	addTaskToDom(newTask);
 }
 
-function addTaskToDom (){
+function addTaskToDom (task){
+	const completedStyle = task.completed ? 'style="background: #89FC00;"' : '';
+	const textStyle = task.completed ? 'style="text-decoration: line-through; color: #484848;"' : '';
+	const displayDate = task.deadline ? task.deadline.split('T')[0] : '';
 	listElement.insertAdjacentHTML("beforeend", `
-        <li data-id=@${task.id}"class="">
+        <li data-id="${task.id}"  ${completedStyle}>
 			<div class="item_content text_style">
-				<span><u>Task:</u> <strong>${taskInput.value}</strong></span>
-		  		<span><u>Priority:</u> <strong>${priorityChoice.value}</strong></span>
-				<span><u>Deadline:</u> <strong>${dateChoice.value}</strong></span>
-				<span><u>Type of task:</u> <strong>${typeOfTask.value}</strong></span>
+				<span ${textStyle}><u>Task:</u> <strong>${task.tasktext}</strong></span>
+		  		<span ${textStyle}><u>Priority:</u> <strong>${task.priority}</strong></span>
+				<span ${textStyle}><u>Deadline:</u> <strong>${displayDate}</strong></span>
+				<span ${textStyle}><u>Type of task:</u> <strong>${task.tasktype}</strong></span>
 			</div>
           	<div class="item_actions">
             	<button class="success">&check;</button>
@@ -80,24 +83,47 @@ addTask.addEventListener("click", async function (event){
 	clearAll();
 });
 
-listElement.addEventListener("click", (event) => {
+listElement.addEventListener("click", async (event) => {
 	event.preventDefault();
 	const target = event.target;
 
 	if (target.classList.contains("success")){
 		const listItem = target.closest("li");
-		listItem.style.background = "#89FC00";
-		const spans = listItem.querySelectorAll(".item_content span");
-		spans.forEach(span => {
-			span.style.textDecoration = "line-through";
-			span.style.color = "#484848";
-		});
+		const taskId = listItem.dataset.id;
+		try {
+			const res = await fetch(`http://localhost:5500/tasks/${taskId}`, {
+				method : "PUT",
+				headers: {"Content-Type":"application/json"}
+			});
+			if (res.ok){
+				listItem.style.background = "#89FC00";
+				const spans = listItem.querySelectorAll(".item_content span");
+				spans.forEach(span => {
+					span.style.textDecoration = "line-through";
+					span.style.color = "#484848";
+				});
+			}
+		}
+		catch (err){
+			console.error(err);
+		}
 	}
 	if (target.classList.contains("delete")){
 		let question = confirm("Are you sure you want to delete this task?");
 		if (question){
 			const listItem = target.closest("li");
-			listItem.remove();
+			const taskId = listItem.dataset.id;
+			try {
+				const res = await fetch(`http://localhost:5500/tasks/${taskId}`, {
+					method: "DELETE",
+				});
+				if (res.ok){
+					listItem.remove();
+				}
+			}
+			catch (err){
+				console.error(err);
+			}
 		}
 	}
 
