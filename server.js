@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+app.use(express.static("frontend"));
 const pool = new Pool ({
 	user: process.env.DB_USER,
 	password: process.env.DB_PASS,
