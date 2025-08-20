@@ -219,3 +219,29 @@ sortBtn.addEventListener("click", (event) => {
 		tasks.forEach(addTaskToDom);
 	});
 });
+
+async function exportJSON (el) {
+	try {
+		const response = await fetch("http://localhost:5500/tasks");
+		const tasks = await response.json();
+
+		const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(tasks, null, 2));
+
+		const downloadLink = document.createElement("a");
+		downloadLink.href = dataStr;
+		downloadLink.download = "tasks_export.json";
+		document.body.appendChild(downloadLink);
+		downloadLink.click();
+		document.body.removeChild(downloadLink);
+
+	}catch(err) {
+		console.error(err);
+		alert("Error exporting tasks");
+	}
+	
+}
+downloadTxtBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	exportJSON();
+	
+})
