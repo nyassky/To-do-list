@@ -129,11 +129,93 @@ listElement.addEventListener("click", async (event) => {
 
 });
 
+function createModal(title, options, callback) {
+	const modal = document.createElement("div");
+	modal.style.position = "fixed";
+	modal.style.top = "0";
+	modal.style.left = "0";
+	modal.style.width = "100%";
+	modal.style.height = "100%";
+	modal.style.backgroundColor = "rgba(0,0,0,0.5)";
+	modal.style.display = "flex";
+	modal.style.justifyContent = "center";
+	modal.style.alignItems = "center";
+	modal.style.zIndex = "999";
+
+	const modalContent = document.createElement("div");
+	modalContent.style.background = "#FF75D1";
+	modalContent.style.padding = "20px";
+	modalContent.style.borderRadius = "10px";
+	modalContent.style.minWidth = "250px";
+	modalContent.style.textAlign = "center";
+	modalContent.style.position = "relative";
+
+	const closeBtn = document.createElement("span");
+	closeBtn.innerHTML = "&times;";
+	closeBtn.style.position = "absolute";
+	closeBtn.style.top = "10px";
+	closeBtn.style.right = "15px";
+	closeBtn.style.cursor = "pointer";
+	closeBtn.style.fontSize = "20px";
+
+	const h2 = document.createElement("h2");
+	h2.innerText = title;
+
+	modalContent.appendChild(closeBtn);
+	modalContent.appendChild(h2);
+
+
+	options.forEach(opt => {
+		const btn = document.createElement("button");
+		btn.classList.add("success");
+		btn.innerText = opt.label;
+		btn.style.width = "200px";
+		btn.style.display = "block";
+		btn.style.margin = "10px auto";
+		btn.addEventListener("click", () => {
+		callback(opt.value);
+		document.body.removeChild(modal);
+		});
+		modalContent.appendChild(btn);
+	});
+
+	modal.appendChild(modalContent);
+	document.body.appendChild(modal);
+
+	closeBtn.addEventListener("click", () => document.body.removeChild(modal));
+	modal.addEventListener("click", e => {
+		if (e.target === modal) document.body.removeChild(modal);
+	});
+}
+
 const filterBtn = document.querySelector('.filter')
 const sortBtn = document.querySelector('.sort');
 const downloadTxtBtn = document.querySelector('.download');
 
 filterBtn.addEventListener("click", (event) => {
 	event.preventDefault();
-	
-})
+	createModal("Filter Tasks", [
+		{label: "High priority", value: "High"},
+		{label: "Medium priority", value: "Mid"},
+		{label: "Low priority", value: "Low"}
+	], async (priority) => {
+		const result = await fetch(`http://localhost:5500/tasks?priority=${priority}`);
+		const tasks = await result.json();
+		listElement.innerHTML = '';
+		tasks.forEach(addTaskToDom);
+	});
+});
+
+sortBtn.addEventListener("click", (event) => {
+	event.preventDefault();
+	createModal("Sort tasks", [
+		{label: "By date", value: "date"},
+		{label: "By priority", value: "priority"},
+		{label: "By Type", value: "type"}
+	], async (sortBy) => {
+		const result = await fetch(`http://localhost:5500/tasks?sortBy=${sortBy}`);
+		const tasks = await result.json();
+		listElement.innerHTML = '';
+		tasks.forEach(addTaskToDom);
+	});
+});

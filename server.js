@@ -22,14 +22,38 @@ const pool = new Pool ({
 
 app.get('/tasks', async (req, res) => {
 	try {
-		const result = await pool.query("SELECT * FROM tasks ORDER BY id DESC");
+		let query = "SELECT * FROM tasks";
+		const values = [];
+		let paramCount = 0;
+
+		if (req.query.priority) {
+			query += ` WHERE priority = $${++paramCount}`;
+			values.push(req.query.priority);
+		}
+
+		const sortFieldMap = {
+			date: "deadline",
+			priority: "priority", 
+			type: "tasktype"
+		};
+
+		if (req.query.sortBy && sortFieldMap[req.query.sortBy]) {
+			const safeSortField = sortFieldMap[req.query.sortBy];
+			query += ` ORDER BY ${safeSortField} DESC`;
+		} else {
+			query += " ORDER BY id DESC";
+		}
+
+		console.log("Final query:", query, "Values:", values);
+		
+		const result = await pool.query(query, values);
 		res.json(result.rows);
 	}
 	catch (err) {
 		console.error(err);
 		res.status(500).send(err.message);
 	}
-})
+});
 
 app.post('/tasks', async (req, res) => {
 	const { tasktext, priority, deadline, tasktype} = req.body;
@@ -64,7 +88,7 @@ app.delete('/tasks/:id', async (req,res) => {
 	}
 	catch (err){
 		console.error(err);
-		res.status(500).send(res.message);	
+		res.status(500).send(err.message);	
 	}
 })
 
